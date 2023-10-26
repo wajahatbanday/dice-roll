@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   height: 100vh;
@@ -22,23 +23,59 @@ body {
   justify-content: center;
 }
 
+.winner-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5spx);
+  border: 2px solid red;
+}
+
+.winner-card {
+  width: 70%;
+  height: 50rem;
+  background-color: greenyellow;
+  border-radius: 100px;
+  border: 2px solid red;
+}
+
 /* LAYOUT */
 main {
   position: relative;
-  width: 100rem;
-  height: 60rem;
+  width: 70%;
+  height: 50rem;
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
   filter: blur();
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
+  border-radius: 100px;
   overflow: hidden;
   display: flex;
 }
 
+.player--0 {
+  border-radius: 100px;
+  position: absolute;
+}
+
+.player--1 {
+  border-radius: 20%;
+  position: absolute;
+  right: 0rem;
+}
+
 .player {
   flex: 50%;
-  padding: 9rem;
+  padding: 10rem;
+  width: 40rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +87,7 @@ main {
   position: relative;
   font-size: 4rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   word-spacing: 2px;
   font-weight: 300;
   margin-bottom: 1rem;
@@ -103,8 +140,7 @@ main {
 
 /* ABSOLUTE POSITIONED ELEMENTS */
 .btn {
-  position: absolute;
-  left: 50%;
+  width: 16rem;
   transform: translateX(-50%);
   color: #444;
   background: none;
@@ -126,13 +162,20 @@ main {
 }
 
 .btn--new {
-  top: 4rem;
+  position: absolute;
+  left: 50%;
+  top: 40rem;
+  left: 50rem;
 }
 .btn--roll {
-  top: 39.3rem;
+  position: absolute;
+  left: 50rem;
+  top: 35rem;
 }
 .btn--hold {
-  top: 46.1rem;
+  position: absolute;
+  left: 67.3rem;
+  top: 35rem;
 }
 
 .btn:active {
@@ -167,7 +210,10 @@ main {
 }
 
 .show-modal {
-  top: 52.9rem;
+  position: absolute;
+  left: 50%;
+  top: 40rem;
+  left: 67.3rem;
 }
 
 .close-modal {
@@ -208,7 +254,7 @@ li {
   width: 90%;
   background-color: white;
   padding: 6rem;
-  border-radius: 5px;
+  border-radius: 50px;
   z-index: 10;
 }
 
