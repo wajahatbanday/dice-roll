@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
 // Selecting elements
-const player0El = document.querySelector('.player--0');
-const player1El = document.querySelector('.player--1');
-const score0El = document.querySelector('#score--0');
-const score1El = document.getElementById('score--1');
-const current0El = document.getElementById('current--0');
-const current1El = document.getElementById('current--1');
+const player0El = document.querySelector(".player--0");
+const player1El = document.querySelector(".player--1");
+const score0El = document.querySelector("#score--0");
+const score1El = document.getElementById("score--1");
+const current0El = document.getElementById("current--0");
+const current1El = document.getElementById("current--1");
 
-const diceEl = document.querySelector('.dice');
-const btnNew = document.querySelector('.btn--new');
-const btnRoll = document.querySelector('.btn--roll');
-const btnHold = document.querySelector('.btn--hold');
+const diceEl = document.querySelector(".dice");
+const btnNew = document.querySelector(".btn--new");
+const btnRoll = document.querySelector(".btn--roll");
+const btnHold = document.querySelector(".btn--hold");
 
 let scores, currentScore, activePlayer, playing;
 
@@ -27,11 +27,11 @@ const init = function () {
   current0El.textContent = 0;
   current1El.textContent = 0;
 
-  diceEl.classList.add('hidden');
-  player0El.classList.remove('player--winner');
-  player1El.classList.remove('player--winner');
-  player0El.classList.add('player--active');
-  player1El.classList.remove('player--active');
+  diceEl.classList.add("hidden");
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  player0El.classList.add("player--active");
+  player1El.classList.remove("player--active");
 };
 init();
 
@@ -39,19 +39,19 @@ const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
-  player0El.classList.toggle('player--active');
-  player1El.classList.toggle('player--active');
+  player0El.classList.toggle("player--active");
+  player1El.classList.toggle("player--active");
 };
 
 // Rolling Dice Functionality.
-btnRoll.addEventListener('click', function () {
+btnRoll.addEventListener("click", function () {
   if (playing) {
     // 1. Generating a random Dice Roll.
     const dice = Math.trunc(Math.random() * 6) + 1;
 
     // 2. Display Dice.
-    diceEl.classList.remove('hidden');
-    diceEl.src = `dice-${dice}.gif`;
+    diceEl.classList.remove("hidden");
+    diceEl.src = `dice-${dice}.png`;
 
     // 3. Check if rolled dice is 1
     if (dice !== 1) {
@@ -66,7 +66,7 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
-btnHold.addEventListener('click', function () {
+btnHold.addEventListener("click", function () {
   if (playing) {
     // 1. Add current score to total score of active player
     scores[activePlayer] += currentScore;
@@ -77,13 +77,13 @@ btnHold.addEventListener('click', function () {
     if (scores[activePlayer] >= 100) {
       // Finish the game
       playing = false;
-      diceEl.classList.add('hidden');
+      diceEl.classList.add("hidden");
       document
         .querySelector(`.player--${activePlayer}`)
-        .classList.add('player--winner');
+        .classList.add("player--winner");
       document
         .querySelector(`.player--${activePlayer}`)
-        .classList.remove('player--active');
+        .classList.remove("player--active");
     } else {
       // 3. Switch Player
       switchPlayer();
@@ -91,4 +91,37 @@ btnHold.addEventListener('click', function () {
   }
 });
 
-btnNew.addEventListener('click', init);
+btnNew.addEventListener("click", init);
+
+// Rules Button
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".close-modal");
+const btnsOpenModal = document.querySelector(".show-modal");
+
+//Open Modal Function
+const openModal = function () {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+//Open Rules Modal OnClick
+btnsOpenModal.addEventListener("click", openModal);
+
+//Close Modal Function
+const closeModal = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+// Close Modal
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    if (!modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  }
+});

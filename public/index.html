@@ -40,10 +40,28 @@
         </div>
       </section>
 
-      <img src="dice-5.gif" alt="Playing dice" class="dice" />
-      <button class="btn btn--new">🔄 New game</button>
-      <button class="btn btn--roll">🎲 Roll dice</button>
-      <button class="btn btn--hold">📥 Hold</button>
+      <img src="dice-5.png" alt="Playing dice" class="dice" />
+      <button class="btn btn--new">New game</button>
+      <button class="btn btn--roll">Roll dice</button>
+      <button class="btn btn--hold">Hold</button>
+      <button class="btn show-modal">Rules</button>
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <h1>Rules</h1>
+        <p>
+        <ul>
+          <li> Player 1 starts the game.</li>
+          <li> When a Player
+          gets 1, their Current Score is erased and the turn switches to the next Player.</li>
+          <li> Use Hold to add your
+          Current Score to your Total Score.</li>
+          <li> First Player to reach Total
+          Score of 100 wins the game.</li>
+          <li> Use New Game to start a new game.</li>
+        </ul>
+        </p>
+      </div>
+      <div class="overlay hidden"></div>
     </main>
     <script src="script.js"></script>
   </body>
