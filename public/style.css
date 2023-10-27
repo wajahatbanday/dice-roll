@@ -35,15 +35,44 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5spx);
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .winner-card {
-  width: 70%;
-  height: 50rem;
-  background-color: greenyellow;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  width: 75%;
+  height: 60rem;
+  background-color: white;
   border-radius: 100px;
-  border: 2px solid red;
+  opacity: 0.8;
+}
+
+.winner-card-h3 {
+  width: fit-content;
+  height: fit-content;
+  font-size: 30px;
+  color: black;
+}
+
+.celebration-img {
+  height: 200px;
+  width: 200px;
+}
+
+.close-winner-banner {
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
 /* LAYOUT */
@@ -193,11 +222,6 @@ main {
   top: 16.5rem;
   transform: translateX(-50%);
   height: 10rem;
-  /* box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2); */
-}
-
-.player--winner {
-  background-color: #2f2f2f;
 }
 
 .player--winner .name {
@@ -230,6 +254,10 @@ main {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
 }
 
 p {

@@ -80,11 +80,11 @@ btnHold.addEventListener("click", function () {
       diceEl.classList.add("hidden");
       document
         .querySelector(`.player--${activePlayer}`)
-        .classList.add("player--winner");
-      document
-        .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
       document.querySelector(".winner-banner").classList.remove("hidden");
+      document.getElementById("winner-card-id").textContent = `Player ${
+        activePlayer + 1
+      } wins the game!!`;
     } else {
       // 3. Switch Player
       switchPlayer();
@@ -126,3 +126,27 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
+// Close Winner Banner
+const newGame = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  diceEl.classList.add("hidden");
+  document.querySelector(".winner-banner").classList.add("hidden");
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  player0El.classList.add("player--active");
+  player1El.classList.remove("player--active");
+};
+
+document
+  .querySelector(".close-winner-banner")
+  .addEventListener("click", newGame);
